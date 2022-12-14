@@ -12,6 +12,10 @@ export default class Property{
     city: string;
     @Column()
     street: string;
+    @Column()
+    district: string;
+    @Column('int')
+    size: number;
     @Column('int')
     number: number;
     @CreateDateColumn()

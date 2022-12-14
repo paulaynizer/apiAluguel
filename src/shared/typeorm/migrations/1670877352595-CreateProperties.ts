@@ -14,6 +14,8 @@ export class CreateProperties1670877352595 implements MigrationInterface {
                     { name: 'price', type: 'decimal', precision: 10, scale : 2},
                     { name: 'city', type: 'varchar'},
                     { name: 'street', type: 'varchar'},
+                    { name: 'district', type: 'varchar'},
+                    { name: 'size', type: 'int'},
                     { name: 'number', type: 'int'},
                     { name: 'created_at', type: 'timestamp', default: 'now()'},
                     { name: 'updated_at', type: 'timestamp', default: 'now()'},

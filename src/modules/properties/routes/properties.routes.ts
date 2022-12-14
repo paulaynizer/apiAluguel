@@ -17,6 +17,8 @@ propertyRouter.post('/', celebrate({
         price: Joi.number().precision(2).required(),
         city: Joi.string().required(),
         street: Joi.string().required(),
+        district: Joi.string().required(),
+        size: Joi.number().required(),
         number: Joi.number().required(),
     }
 }),propertiesController.create);
@@ -28,6 +30,8 @@ propertyRouter.put('/:id', celebrate({
         price: Joi.number().precision(2).required(),
         city: Joi.string().required(),
         street: Joi.string().required(),
+        district: Joi.string().required(),
+        size: Joi.number().required(),
         number: Joi.number().required(),
     }
 }), propertiesController.update);

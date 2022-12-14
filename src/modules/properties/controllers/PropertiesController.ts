@@ -24,20 +24,20 @@ export default class PropertiesController{
 
     public async create(request: Request, response: Response) :
     Promise<Response> {
-        const { description, price, city, street, number } = request.body;
+        const { description, price, city, street, district, size, number } = request.body;
         const createProperty= new CreatePropertyService();
         const property= await createProperty.execute({ description,
-        price, city, street, number });
+        price, city, street, district, size, number });
         return response.json(property);    
     }
 
     public async update(request: Request, response: Response) :
     Promise<Response> {
         const { id } = request.params;
-        const { description, price, city, street, number } = request.body;
+        const { description, price, city, street, district, size, number } = request.body;
         const updateProperty= new UpdatePropertyService();
         const property= await updateProperty.execute({ id,  description,
-        price, city, street,number });
+        price, city, street, district, size,number });
         return response.json(property);    
     }
 
