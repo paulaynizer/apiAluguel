@@ -21,16 +21,15 @@ export default class UpdatePropertyService{
         const propertyRepository = 
         getCustomRepository(PropertyRespository);
 
-        const property= await propertyRepository.findOne(id);
+        const property = await propertyRepository.findOne(id);
         if(!property){
-            throw new AppError('Propertynot found.');
+            throw new AppError('Property not found.');
         }
 
-        const propertyExists = await 
-        propertyRepository.findByName(description);
+        const propertyExists = await propertyRepository.findByName(description);
         if(propertyExists && description != property.description){
             throw new AppError('There is already one property' +
-            'with this description.');
+            'with this name.');
         }
 
         property.description = description;

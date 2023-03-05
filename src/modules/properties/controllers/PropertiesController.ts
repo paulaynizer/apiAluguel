@@ -1,15 +1,15 @@
-import CreatePropertyService from "@modules/properties/services/CreatePropertyService";
-import DeletePropertyService from "@modules/properties/services/DeletePropertyService";
-import ListPropertyService from "@modules/properties/services/ListPropertyService";
-import ShowPropertyService from "@modules/properties/services/ShowPropertyService";
-import UpdatePropertyService from "@modules/properties/services/UpdatePropertyService";
+import CreatePropertiesService from "@modules/properties/services/CreatePropetyService";
+import DeletePropertiesService from "@modules/properties/services/DeletePropertyService";
+import ListPropertiesService from "@modules/properties/services/ListPropertyService";
+import ShowPropertiesService from "@modules/properties/services/ShowPropertyService";
+import UpdatePropertiesService from "@modules/properties/services/UpdatePropertyService";
 import { Request, Response } from "express";
 
 export default class PropertiesController{
 
     public async index(request: Request, response: Response) :
     Promise<Response> {
-        const listProperties = new ListPropertyService();
+        const listProperties = new ListPropertiesService();
         const properties = await listProperties.execute();
         return response.json(properties);    
     }
@@ -17,7 +17,7 @@ export default class PropertiesController{
     public async show(request: Request, response: Response) :
     Promise<Response> {
         const { id } = request.params;
-        const showProperty= new ShowPropertyService();
+        const showProperty= new ShowPropertiesService();
         const property= await showProperty.execute({ id });
         return response.json(property);    
     }
@@ -25,7 +25,7 @@ export default class PropertiesController{
     public async create(request: Request, response: Response) :
     Promise<Response> {
         const { description, price, city, street, district, size, number } = request.body;
-        const createProperty= new CreatePropertyService();
+        const createProperty= new CreatePropertiesService();
         const property= await createProperty.execute({ description,
         price, city, street, district, size, number });
         return response.json(property);    
@@ -35,8 +35,8 @@ export default class PropertiesController{
     Promise<Response> {
         const { id } = request.params;
         const { description, price, city, street, district, size, number } = request.body;
-        const updateProperty= new UpdatePropertyService();
-        const property= await updateProperty.execute({ id,  description,
+        const updateProperty= new UpdatePropertiesService();
+        const property= await updateProperty.execute({ id, description,
         price, city, street, district, size,number });
         return response.json(property);    
     }
@@ -44,7 +44,7 @@ export default class PropertiesController{
     public async delete(request: Request, response: Response) :
     Promise<Response> {
         const { id } = request.params;
-        const deleteProperty= new DeletePropertyService();
+        const deleteProperty= new DeletePropertiesService();
         await deleteProperty.execute({ id });
         return response.json([]);    
     }

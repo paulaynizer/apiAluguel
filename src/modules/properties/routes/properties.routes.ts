@@ -1,17 +1,16 @@
-import { celebrate, Segments, Joi } from "celebrate";
 import { Router } from "express";
+import { celebrate, Joi, Segments } from "celebrate";
 import PropertiesController from "../controllers/PropertiesController";
 
-const propertyRouter = Router();
+const propertiesRouter = Router();
 const propertiesController = new PropertiesController();
 
-propertyRouter.get('/', propertiesController.index);
-
-propertyRouter.get('/:id', celebrate({
+propertiesRouter.get('/', propertiesController.index);
+propertiesRouter.get('/:id', celebrate({
     [Segments.PARAMS] : {id: Joi.string().uuid().required()}
 }), propertiesController.show);
 
-propertyRouter.post('/', celebrate({
+propertiesRouter.post('/', celebrate({
     [Segments.BODY]: {
         description: Joi.string().required(),
         price: Joi.number().precision(2).required(),
@@ -20,10 +19,10 @@ propertyRouter.post('/', celebrate({
         district: Joi.string().required(),
         size: Joi.number().required(),
         number: Joi.number().required(),
-    }
-}),propertiesController.create);
+    } 
+}), propertiesController.create);
 
-propertyRouter.put('/:id', celebrate({
+propertiesRouter.put('/:id', celebrate({
     [Segments.PARAMS] : {id: Joi.string().uuid().required()},
     [Segments.BODY]: {
         description: Joi.string().required(),
@@ -36,10 +35,10 @@ propertyRouter.put('/:id', celebrate({
     }
 }), propertiesController.update);
 
-propertyRouter.delete('/:id', celebrate({
+propertiesRouter.delete('/:id', celebrate({
     [Segments.PARAMS] : {id: Joi.string().uuid().required()}
 }), propertiesController.delete);
 
-export default propertyRouter;
+export default propertiesRouter;
 
 //lembrar de importar na routes->index

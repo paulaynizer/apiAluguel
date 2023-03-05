@@ -6,11 +6,9 @@ import PropertyRespository from "../typeorm/repositories/PropertyRepository";
 export default class ListPropertyService{
 
     public async execute() : Promise<Property[]>{
-        const propertyRepository = 
-        getCustomRepository(PropertyRespository);
-
-        const properties = await propertyRepository.find();
-        return properties;
+        const propertyRepository = getCustomRepository(PropertyRespository);
+        const property = await propertyRepository.find();
+        return property;
     }
 
 }

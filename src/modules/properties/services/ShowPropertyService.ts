@@ -10,12 +10,11 @@ interface IRequest{
 export default class ShowPropertyService{
 
     public async execute({id} : IRequest) : Promise<Property>{
-        const propertyRepository = 
-        getCustomRepository(PropertyRespository);
+        const propertyRepository = getCustomRepository(PropertyRespository);
 
-        const property= await propertyRepository.findOne(id);
+        const property = await propertyRepository.findOne(id);
         if(!property){
-            throw new AppError('Propertynot found.');
+            throw new AppError('Property not found.');
         }
 
         return property;

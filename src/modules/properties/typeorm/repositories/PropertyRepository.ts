@@ -5,8 +5,8 @@ import Property from "../entities/Property";
 export default class PropertyRespository extends 
     Repository<Property>{
         public async findByName(description: string) 
-        : Promise<Property| undefined>{
-            const property= await this.findOne({
+        : Promise<Property | undefined>{
+            const property = await this.findOne({
                 where: { description }
             })
             return property;
