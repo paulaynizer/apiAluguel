@@ -19,6 +19,7 @@ propertiesRouter.post('/', celebrate({
         district: Joi.string().required(),
         size: Joi.number().required(),
         number: Joi.number().required(),
+        quantity: Joi.number().required()
     } 
 }), propertiesController.create);
 
@@ -32,6 +33,7 @@ propertiesRouter.put('/:id', celebrate({
         district: Joi.string().required(),
         size: Joi.number().required(),
         number: Joi.number().required(),
+        quantity: Joi.number().required()
     }
 }), propertiesController.update);
 

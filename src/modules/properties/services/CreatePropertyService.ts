@@ -11,11 +11,12 @@ interface IRequest{
     district: string;
     size: number;
     number: number;
+    quantity: number;
 }
 
 export default class CreatePropertyService{
 
-    public async execute({description, price, city, street, district, size, number} : IRequest) :
+    public async execute({description, price, city, street, district, size, number, quantity} : IRequest) :
     Promise<Property>{
         const propertyRepository = 
         getCustomRepository(PropertyRespository);
@@ -28,7 +29,7 @@ export default class CreatePropertyService{
         }
 
         const property= propertyRepository.create({
-            description, price, city, street, district, size, number
+            description, price, city, street, district, size, number, quantity
         });
         await propertyRepository.save(property);
         return property;
